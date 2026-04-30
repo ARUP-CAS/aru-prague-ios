@@ -58,13 +58,16 @@ class PlaceDetailViewController: BaseViewController {
         //        cards.append(self.prepare(text: place.text))
         
         place.content.forEach { (content) in
+            let type = content.type
             switch content.content {
             case .text(let texts):
                 cards.append(contentsOf: texts.map{self.prepare(text: $0)})
             case .video(let videos):
                 cards.append(contentsOf: videos.map{self.prepare(video: $0)})
             case .image(let images):
-                cards.append(contentsOf: images.map{self.prepare(image: $0)})
+                    cards.append(contentsOf: images.map{self.prepare(image: $0)})
+            case .sphereImage(let images):
+                cards.append(contentsOf: images.map{self.prepare(sphereImage: $0)})
             default:
                 return
             }
@@ -82,9 +85,15 @@ class PlaceDetailViewController: BaseViewController {
 
     }
     
-    private func prepare(image:Image) -> ImageCard? {
+    private func prepare(image:ImageContent) -> ImageCard? {
         let card = Bundle.main.loadNibNamed("ImageCard", owner: self, options: nil)?.first as? ImageCard
         card?.image = image
+        return card
+        
+    }
+    private func prepare(sphereImage:SphereContent) -> SphereImageCard? {
+        let card = Bundle.main.loadNibNamed("SphereImageCard", owner: self, options: nil)?.first as? SphereImageCard
+        card?.image = sphereImage
         return card
         
     }
@@ -94,7 +103,7 @@ class PlaceDetailViewController: BaseViewController {
         return card
         
     }
-    private func prepare(text:Text) -> TextCard? {
+    private func prepare(text:TextContent) -> TextCard? {
         let card = Bundle.main.loadNibNamed("TextCard", owner: self, options: nil)?.first as? TextCard
         card?.text = text.text
         return card

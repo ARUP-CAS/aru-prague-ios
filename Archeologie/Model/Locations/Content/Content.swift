@@ -13,12 +13,13 @@ struct LocationContent: Codable, Equatable {
     var content: ContentUnion
 }
 enum ContentUnion:Codable, Equatable {
-    case text([Text])
+    case text([TextContent])
     case video([Video])
     case model([Model])
-    case image([Image])
+    case image([ImageContent])
     case ar([AR])
-    
+    case sphereImage([SphereContent])
+
     init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()
 
@@ -35,11 +36,15 @@ enum ContentUnion:Codable, Equatable {
             self = .ar(x)
             return
         }
-        if let x = try? container.decode([Image].self){
+        if let x = try? container.decode([ImageContent].self){
             self = .image(x)
             return
         }
-        if let x = try? container.decode([Text].self) {
+        if let x = try? container.decode([SphereContent].self) {
+            self = .sphereImage(x)
+            return
+        }
+        if let x = try? container.decode([TextContent].self) {
             self = .text(x)
             return
         }
@@ -52,6 +57,8 @@ enum ContentUnion:Codable, Equatable {
         case .text(let x):
             try container.encode(x)
         case .image(let x):
+            try container.encode(x)
+        case .sphereImage(let x):
             try container.encode(x)
         case .video(let x):
             try container.encode(x)

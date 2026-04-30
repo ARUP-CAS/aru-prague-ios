@@ -55,10 +55,10 @@ class ThematicsCreditsViewController: BaseViewController {
             acknowledgmentLabel.isHidden = true
         }
 
-        createImage(url: place.logo1)
-        createImage(url: place.logo2)
-        createImage(url: place.logo3)
-        createImage(url: place.logo4)
+        createImage(url: place.logo1, link:place.logo1URL)
+        createImage(url: place.logo2, link:place.logo2URL)
+        createImage(url: place.logo3, link:place.logo3URL)
+        createImage(url: place.logo4, link:place.logo4URL)
 
      
     }
@@ -67,7 +67,7 @@ class ThematicsCreditsViewController: BaseViewController {
         self.navigationController?.dismiss(animated: true, completion: nil)
     }
     
-    private func createImage(url:String) {
+    private func createImage(url:String, link: String?) {
         if let url = try? url.asURL() {
             let imageView = UIImageView()
             imageView.kf.setImage(with: url)
@@ -77,6 +77,12 @@ class ThematicsCreditsViewController: BaseViewController {
             stack.addArrangedSubview(imageView)
             imageView.leadingAnchor.constraint(equalTo: stack.leadingAnchor, constant: 20).isActive = true
             imageView.trailingAnchor.constraint(equalTo: stack.trailingAnchor, constant: -20).isActive = true
+            
+            imageView.rx.tapGesture().when(.recognized).subscribe { _ in
+                if let url = try? link?.asURL() {
+                    UIApplication.shared.open(url)
+                }
+            }.disposed(by: disposeBag)
         }
     }
 }

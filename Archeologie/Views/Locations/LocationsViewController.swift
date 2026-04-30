@@ -29,8 +29,7 @@ class LocationsViewController:BaseViewController {
     var markers:[Int:Marker] = [:]
     var pullController:LocationsPullViewController!
     var fpc: FloatingPanelController!
-    lazy var fpLayout = ArchFloatingPanelLayout()
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
         addMap()
@@ -67,7 +66,7 @@ class LocationsViewController:BaseViewController {
             
             guard let place = event.element, self.fpc != nil else { return }
             
-            self.fpLayout.fullEnabled = place != nil
+//            self.fpLayout.fullEnabled = place != nil
             
             
             //            self.fpc.move(to: place != nil ? .full : .half, animated: true)
@@ -166,12 +165,20 @@ class LocationsViewController:BaseViewController {
         
         
         if fpc == nil {
-            fpLayout.type = .locations
-            fpLayout.offset = self.view.safeAreaInsets.bottom
+//            fpLayout.type = .locations
+//            fpLayout.offset = self.view.safeAreaInsets.bottom
             
             fpc = FloatingPanelController()
             
             fpc.delegate = self // Optional
+            fpc.layout = MyFloatingPanelLayout(type: .locations)
+
+            // Initialize FloatingPanelController and add the view
+            fpc.surfaceView.backgroundColor = .clear
+    //        fpc.surfaceView.cornerRadius = 9.0
+    //        fpc.surfaceView.shadowHidden = false
+            fpc.backdropView.backgroundColor = .clear
+            fpc.contentInsetAdjustmentBehavior = .always
             
             // Set a content view controller.
             pullController = storyboard?.instantiateViewController(withIdentifier: "locationsPullController") as? LocationsPullViewController
@@ -184,11 +191,12 @@ class LocationsViewController:BaseViewController {
             fpc.track(scrollView: pullController.scrollView)
             
             // Add and show the views managed by the `FloatingPanelController` object to self.view.
-            fpc.addPanel(toParent: self)
+//            fpc.addPanel(toParent: self)
             
-            fpc.surfaceView.cornerRadius = 20
+//            fpc.surfaceView.cornerRadius = 20
             
-            fpc.set(contentViewController: pullController)
+            fpc.invalidateLayout()
+
         }
     }
     override func viewWillLayoutSubviews() {
@@ -198,7 +206,9 @@ class LocationsViewController:BaseViewController {
     }
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(true)
-        self.fpLayout.fullEnabled = PlacesService.service.selectedLocation.value != nil
+//        self.fpLayout.fullEnabled = PlacesService.service.selectedLocation.value != nil
+                    fpc.addPanel(toParent: self)
+
         
     }
 }
@@ -314,7 +324,7 @@ extension LocationsViewController:CKClusterManagerDelegate, GMSMapViewDataSource
         if let previousPlace = PlacesService.service.selectedLocation.value, place == previousPlace{
 //            self.fpc.move(to: .full, animated: true)
         } else {
-            if place != nil && self.fpc.position != .full {
+            if place != nil && self.fpc.state != .full {
                 self.fpc.move(to: .half, animated: true)
                 
             }
@@ -332,28 +342,22 @@ extension LocationsViewController:CKClusterManagerDelegate, GMSMapViewDataSource
 }
 
 extension LocationsViewController:FloatingPanelControllerDelegate {
-    func floatingPanel(_ vc: FloatingPanelController, layoutFor newCollection: UITraitCollection) -> FloatingPanelLayout? {
-        return fpLayout
+
+    func floatingPanelDidEndDragging(_ fpc: FloatingPanelController, willAttract attract: Bool) {
+        if fpc.state == .tip {
+               
+               delay(0.2) {
+                   self.zoomToAllParks()
+               }
+               
+           }
     }
-    func floatingPanelDidEndDragging(_ vc: FloatingPanelController, withVelocity velocity: CGPoint, targetPosition: FloatingPanelPosition) {
-        if targetPosition == .half {
-            //            fpLayout.fullEnabled = true
-            
-        } else if targetPosition == .tip {
-            
-            delay(0.2) {
-                self.zoomToAllParks()
-            }
-            
-        }
-        
-        
-    }
-    func floatingPanelDidChangePosition(_ vc: FloatingPanelController) {
-        
+
+    func floatingPanelDidChangeState(_ fpc: FloatingPanelController) {
+
         self.updateMapPadding()
 //        self.pullController.collectionView.alpha = vc.position == .tip ? 0 : 1
-        if vc.position == .half && PlacesService.service.selectedLocation.value == nil {
+        if fpc.state == .half && PlacesService.service.selectedLocation.value == nil {
             PlacesService.service.selectedLocation.accept(PlacesService.service.locations.value.first)
         }
     }
@@ -372,12 +376,13 @@ extension LocationsViewController:FloatingPanelControllerDelegate {
     }
     
     func updateMapPadding() {
-        if self.fpc.position != .full, mapView != nil, let offset = self.fpc.layout.insetFor(position: self.fpc.position) {
-            self.scaleBottomConstraint.constant = offset + 10
-            
-            self.mapView.padding = UIEdgeInsets(top: 0, left: 0, bottom: offset, right: 0)
-            self.view.layoutIfNeeded()
-            
-        }
+        if self.fpc.state != .full, mapView != nil {
+              let offset = self.fpc.surfaceView.frame.height
+              self.mapView.padding = UIEdgeInsets(top: 0, left: 0, bottom: offset, right: 0)
+
+
+              self.view.layoutIfNeeded()
+
+          }
     }
 }

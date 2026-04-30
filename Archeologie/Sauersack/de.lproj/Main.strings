@@ -1,0 +1,51 @@
+
+/* Class = "UIButton"; normalTitle = "OPEN LOCATION"; ObjectID = "0Uf-nb-jan"; */
+"0Uf-nb-jan.normalTitle" = "mehr erfahren";
+
+
+/* Class = "UILabel"; text = "In artistic cooperation with"; ObjectID = "7x1-ZF-XAo"; */
+"7x1-ZF-XAo.text" = "bildkünstlerische Mitarbeit";
+
+/* Class = "UIButton"; normalTitle = "Navigate"; ObjectID = "Exw-vA-FIo"; */
+"Exw-vA-FIo.normalTitle" = "Navigation starten";
+
+/* Class = "UILabel"; text = "In cooperation with"; ObjectID = "FSl-t9-K1y"; */
+"FSl-t9-K1y.text" = "wissenschaftliche Mitarbeit";
+
+/* Class = "UILabel"; text = "Topics"; ObjectID = "GPk-R7-WsE"; */
+"GPk-R7-WsE.text" = "Rundgänge";
+
+/* Class = "UILabel"; text = "Acknowledgment"; ObjectID = "OOx-Cx-VYJ"; */
+"OOx-Cx-VYJ.text" = "Danksagung";
+
+/* Class = "UILabel"; text = "Author"; ObjectID = "PT5-Hy-NuJ"; */
+"PT5-Hy-NuJ.text" = "AutorIn";
+
+
+/* Class = "UIButton"; normalTitle = "Show on web"; ObjectID = "Snp-ji-pzH"; */
+"Snp-ji-pzH.normalTitle" = "im Web anschauen";
+
+
+/* Class = "UITextField"; placeholder = "Search..."; ObjectID = "dgl-tc-L6k"; */
+"dgl-tc-L6k.placeholder" = "suchen...";
+
+/* Class = "UIButton"; normalTitle = "Credits"; ObjectID = "klo-Xx-Etp"; */
+"klo-Xx-Etp.normalTitle" = "Impressum";
+
+/* Class = "UILabel"; text = "Address"; ObjectID = "sFe-Ha-wXt"; */
+"sFe-Ha-wXt.text" = "Adresse";
+
+
+/* Class = "UIBarButtonItem"; title = "Back"; ObjectID = "ufB-jP-bCP"; */
+"ufB-jP-bCP.title" = "zurück";
+
+/* Class = "UIButton"; normalTitle = "START GUIDE"; ObjectID = "yNT-rb-UqN"; */
+"yNT-rb-UqN.normalTitle" = "Rundgang starten";
+"F9h-qA-h9j.text" = "verlassen Sie nicht die markierten Wege";
+"HeU-DP-2nX.text" = "werfen Sie keinen Müll weg";
+"NXf-EE-oRo.text" = "betreten Sie keine Gebäuderuinen";
+"YxJ-oe-Dlt.text" = "machen Sie keinen unnötigen Lärm";
+"R3r-oq-lIt.text" = "pflücken Sie keine Blumen und zerstören Sie keine Flora";
+"Jsy-JC-t0V.text" = "entfernen Sie keine Artefakte, verwenden Sie keinen Metalldetektor.";
+"K7c-7D-vj6.text" = "Liebe Besucher,\nHerzlich willkommen in der niedergegangenen Rolava, einem Gebiet, das aufgrund seines natürlichen und kulturhistorischen Werts äußerst wertvoll ist. Bitte beachten Sie bei Ihrem Besuch folgende Regeln:";
+"BRb-em-dLY.text" = "Wir wünschen Ihnen ein spannendes Besuchererlebnis!";

@@ -27,7 +27,7 @@ class VideoCard:UIView {
                 self.player = player
                 player.clipsToBounds = false
             }
-            label.text = video.text
+            label.attributedText = video.text.htmlAttributed
         }
     }
     override func didMoveToSuperview() {

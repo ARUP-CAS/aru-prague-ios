@@ -14,8 +14,14 @@
     
     static var service:PlacesService = PlacesService()
     lazy var disposeBag:DisposeBag = DisposeBag()
-    private var thematicsObs = Service.api.rx.request(.thematics).do().map(Thematics.self).asObservable()
-    private var locationsObs = Service.api.rx.request(.location(nil)).do().map(Locations.self).map({$0.locations}).asObservable()
+     private var thematicsObs = Service.api.rx.request(.thematics).do().map(Thematics.self).catch({ error in
+         print(error.localizedDescription)
+         return Single.just(Thematics(thematics: [], status: "fail", statusCode:500))
+     }).asObservable()
+    private var locationsObs = Service.api.rx.request(.location(nil)).do().map(Locations.self).catch({ error in
+        print(error.localizedDescription)
+        return Single.just(Locations(locale: "", locations: [], status: "fail", statusCode: 500))
+    }).map({$0.locations}).asObservable()
     var thematics:BehaviorRelay<[Thematic]> = BehaviorRelay<[Thematic]>(value: [])
     var selectedThematic:BehaviorRelay<Thematic?> = BehaviorRelay<Thematic?>(value: nil)
     
