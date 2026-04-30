@@ -14,13 +14,14 @@ import ClusterKit
 import FloatingPanel
 import GoogleUtilities
 import GoogleMapsUtils
-
+import SwiftUI
 class ThematicsViewController:BaseViewController {
     
     @IBOutlet var mapContainer: UIView!
     @IBOutlet weak var searchField: UITextField!
     @IBOutlet weak var scaleBar: ScaleBarView!
     @IBOutlet weak var scaleBottomConstraint: NSLayoutConstraint!
+    @IBOutlet weak var introScroll: UIScrollView!
     
     var mapView:GMSMapView!
     var geoJsonParser:GMUGeoJSONParser!
@@ -37,18 +38,24 @@ class ThematicsViewController:BaseViewController {
     var markers:[Int:Marker] = [:]
     var pullController:ThematicsPullViewController!
     var fpc: FloatingPanelController!
-    lazy var fpLayout = ArchFloatingPanelLayout()
     
-    
+    var roamingPresented = false
     override func viewDidLoad() {
         super.viewDidLoad()
         addMap()
         setupRX()
+
+            
     }
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(true)
-        
-        self.fpLayout.fullEnabled = PlacesService.service.selectedThematic.value != nil
+        if !roamingPresented {
+            let hosting = UIHostingController(rootView: RoamingPopup())
+            self.present(hosting, animated: true)
+            self.roamingPresented = true
+        }
+//        self.fpLayout.fullEnabled = PlacesService.service.selectedThematic.value != nil
+
     }
     private func setupRX () {
         
@@ -74,7 +81,7 @@ class ThematicsViewController:BaseViewController {
             
             guard let place = event.element, self.fpc != nil else { return }
             
-            self.fpLayout.fullEnabled = place != nil
+//            self.fpLayout.fullEnabled = place != nil
             self.fpc.delegate = self
             self.fpc.move(to: .half, animated: true)
             //            self.fpc.move(to: place != nil ? .full : .half, animated: true)
@@ -231,13 +238,14 @@ class ThematicsViewController:BaseViewController {
         
         if fpc == nil {
             // Initialize a `FloatingPanelController` object.
-            fpLayout.offset = self.view.safeAreaInsets.bottom
+//            fpLayout.offset = self.view.safeAreaInsets.bottom
             
             fpc = FloatingPanelController()
             
             // Assign self as the delegate of the controller.
             fpc.delegate = self // Optional
-            
+            fpc.layout = MyFloatingPanelLayout(type: .thematics)
+
             // Set a content view controller.
             pullController = storyboard?.instantiateViewController(withIdentifier: "thematicsPullController") as? ThematicsPullViewController
             pullController.placeSelected = { place in
@@ -249,22 +257,28 @@ class ThematicsViewController:BaseViewController {
             fpc.track(scrollView: pullController.scrollView)
             
             // Add and show the views managed by the `FloatingPanelController` object to self.view.
-            fpc.addPanel(toParent: self)
             fpc.contentMode = .fitToBounds
 
-            fpc.surfaceView.cornerRadius = 20
+//            fpc.surfaceView.cornerRadius = 20
             
             fpc.set(contentViewController: pullController)
         }
     }
+
     override func viewWillLayoutSubviews() {
         super.viewWillLayoutSubviews()
         
         setupFloatingPanel()
         
     }
+    
     @IBAction func search(_ sender: Any) {
         PlacesService.service.query.accept(searchField.text)
+    }
+    @IBAction func hideAction(_ sender: Any) {
+        self.introScroll.isHidden = true
+        fpc.addPanel(toParent: self)
+
     }
 }
 extension ThematicsViewController:UITextFieldDelegate {
@@ -396,7 +410,7 @@ extension ThematicsViewController:CKClusterManagerDelegate, GMSMapViewDataSource
         if let previousPlace = PlacesService.service.selectedThematic.value, place == previousPlace{
 //            self.fpc.move(to: .full, animated: true)
         } else {
-            if place != nil && self.fpc.position != .full {
+            if place != nil && self.fpc.state != .full {
                 self.fpc.move(to: .half, animated: true)
                 
             }
@@ -414,14 +428,13 @@ extension ThematicsViewController:CKClusterManagerDelegate, GMSMapViewDataSource
 }
 
 extension ThematicsViewController:FloatingPanelControllerDelegate {
-    func floatingPanel(_ vc: FloatingPanelController, layoutFor newCollection: UITraitCollection) -> FloatingPanelLayout? {
-        return fpLayout
-    }
-    func floatingPanelDidEndDragging(_ vc: FloatingPanelController, withVelocity velocity: CGPoint, targetPosition: FloatingPanelPosition) {
-        if targetPosition == .half {
+
+    func floatingPanelDidEndDragging(_ fpc: FloatingPanelController, willAttract attract: Bool) {
+        if fpc.state == .half {
             //            fpLayout.fullEnabled = true
-            
-        } else if targetPosition == .tip {
+            PlacesService.service.selectedThematic.accept(PlacesService.service.thematics.value.first)
+
+        } else if fpc.state == .tip {
             
             delay(0.2) {
                 //                self.zoomToAllParks()
@@ -432,11 +445,11 @@ extension ThematicsViewController:FloatingPanelControllerDelegate {
         
         
     }
-    func floatingPanelDidChangePosition(_ vc: FloatingPanelController) {
-        
+    func floatingPanelDidChangeState(_ fpc: FloatingPanelController) {
+
         self.updateMapPadding()
 //        self.pullController.collectionView.alpha = vc.position == .tip ? 0 : 1
-        if vc.position == .half && PlacesService.service.selectedThematic.value == nil {
+        if fpc.state == .half && PlacesService.service.selectedThematic.value == nil {
             PlacesService.service.selectedThematic.accept(PlacesService.service.thematics.value.first)
         }
     }
@@ -456,7 +469,9 @@ extension ThematicsViewController:FloatingPanelControllerDelegate {
     }
     
     func updateMapPadding() {
-        if self.fpc.position != .full, mapView != nil, let offset = self.fpc.layout.insetFor(position: self.fpc.position) {
+        if self.fpc.state != .full, mapView != nil {
+            let offset = self.fpc.surfaceView.frame.height
+
             self.mapView.padding = UIEdgeInsets(top: 0, left: 0, bottom: offset, right: 0)
             
             self.scaleBottomConstraint.constant = offset + 10

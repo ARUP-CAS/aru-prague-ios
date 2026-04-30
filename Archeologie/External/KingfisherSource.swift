@@ -46,8 +46,14 @@ public class KingfisherSource: NSObject, InputSource {
     }
 
     @objc public func load(to imageView: UIImageView, with callback: @escaping (UIImage?) -> Void) {
-        imageView.kf.setImage(with: self.url, placeholder: self.placeholder, options: self.options, progressBlock: nil) { (image, _, _, _) in
-            callback(image)
+        imageView.kf.setImage(with: self.url, placeholder: self.placeholder, options: self.options, progressBlock: nil) {result in
+            switch result {
+            case .success(let image):
+                callback(image.image)
+            default:
+                break
+
+            }
         }
     }
     
@@ -56,8 +62,14 @@ public class KingfisherSource: NSObject, InputSource {
             (recieved,total)
             in
             progress((CGFloat(recieved)/CGFloat(total)))
-        }) { (image, _, _, _) in
-            callback(image)
+        }) { result in
+            switch result {
+            case .success(let image):
+                callback(image.image)
+            default:
+                break
+
+            }
         }
     }
     

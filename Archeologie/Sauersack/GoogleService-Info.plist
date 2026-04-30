@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>CLIENT_ID</key>
+	<string>244940264145-bn3lc4m2a6kpikvreq7n5kqv4tuin25l.apps.googleusercontent.com</string>
+	<key>REVERSED_CLIENT_ID</key>
+	<string>com.googleusercontent.apps.244940264145-bn3lc4m2a6kpikvreq7n5kqv4tuin25l</string>
+	<key>ANDROID_CLIENT_ID</key>
+	<string>244940264145-s8ls06iumj42pvg15id9o9sff6iguukh.apps.googleusercontent.com</string>
+	<key>API_KEY</key>
+	<string>AIzaSyBtb6Y5Vo7dE_HRmf4ToYKEcBxw3MfpA6E</string>
+	<key>GCM_SENDER_ID</key>
+	<string>244940264145</string>
+	<key>PLIST_VERSION</key>
+	<string>1</string>
+	<key>BUNDLE_ID</key>
+	<string>cz.visualio.sauersack</string>
+	<key>PROJECT_ID</key>
+	<string>sauersack</string>
+	<key>STORAGE_BUCKET</key>
+	<string>sauersack.appspot.com</string>
+	<key>IS_ADS_ENABLED</key>
+	<false></false>
+	<key>IS_ANALYTICS_ENABLED</key>
+	<false></false>
+	<key>IS_APPINVITE_ENABLED</key>
+	<true></true>
+	<key>IS_GCM_ENABLED</key>
+	<true></true>
+	<key>IS_SIGNIN_ENABLED</key>
+	<true></true>
+	<key>GOOGLE_APP_ID</key>
+	<string>1:244940264145:ios:103246a138c9260e5cebf0</string>
+</dict>
+</plist>

@@ -14,12 +14,12 @@ class ImageCard:UIView {
     @IBOutlet weak var textLabel:UILabel!
     @IBOutlet weak var overlayView:UIView!
     
-    var image:Image! {
+    var image:ImageContent! {
         didSet {
             if let url = try? image.url.asURL(), let data = try? Data(contentsOf: url), let rImage = UIImage(data: data) {
                 imageView.image = rImage
             }
-            textLabel.text = image.text
+            textLabel.attributedText = image.text.htmlAttributed
         }
     }
     

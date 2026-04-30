@@ -1,0 +1,54 @@
+
+/* Class = "UIButton"; normalTitle = "OPEN LOCATION"; ObjectID = "0Uf-nb-jan"; */
+"0Uf-nb-jan.normalTitle" = "OPEN LOCATION";
+
+
+/* Class = "UILabel"; text = "In artistic cooperation with"; ObjectID = "7x1-ZF-XAo"; */
+"7x1-ZF-XAo.text" = "In artistic cooperation with";
+/* Class = "UIButton"; normalTitle = "Navigate"; ObjectID = "Exw-vA-FIo"; */
+"Exw-vA-FIo.normalTitle" = "Navigate";
+
+/* Class = "UILabel"; text = "In cooperation with"; ObjectID = "FSl-t9-K1y"; */
+"FSl-t9-K1y.text" = "In cooperation with";
+
+/* Class = "UILabel"; text = "Topics"; ObjectID = "GPk-R7-WsE"; */
+"GPk-R7-WsE.text" = "Guides";
+
+/* Class = "UILabel"; text = "Acknowledgment"; ObjectID = "OOx-Cx-VYJ"; */
+"OOx-Cx-VYJ.text" = "Acknowledgment";
+
+/* Class = "UILabel"; text = "Author"; ObjectID = "PT5-Hy-NuJ"; */
+"PT5-Hy-NuJ.text" = "Author";
+
+
+/* Class = "UIButton"; normalTitle = "Show on web"; ObjectID = "Snp-ji-pzH"; */
+"Snp-ji-pzH.normalTitle" = "Show on web";
+
+/* Class = "UILabel"; text = "Label"; ObjectID = "bFl-CO-QGt"; */
+"bFl-CO-QGt.text" = "Label";
+
+/* Class = "UITextField"; placeholder = "Search..."; ObjectID = "dgl-tc-L6k"; */
+"dgl-tc-L6k.placeholder" = "Search...";
+
+
+/* Class = "UIButton"; normalTitle = "Credits"; ObjectID = "klo-Xx-Etp"; */
+"klo-Xx-Etp.normalTitle" = "Credits";
+
+
+/* Class = "UILabel"; text = "Address"; ObjectID = "sFe-Ha-wXt"; */
+"sFe-Ha-wXt.text" = "Address";
+
+
+/* Class = "UIBarButtonItem"; title = "Back"; ObjectID = "ufB-jP-bCP"; */
+"ufB-jP-bCP.title" = "Back";
+
+/* Class = "UIButton"; normalTitle = "START GUIDE"; ObjectID = "yNT-rb-UqN"; */
+"yNT-rb-UqN.normalTitle" = "START GUIDE";
+"F9h-qA-h9j.text" = "do not leave the marked trails";
+"HeU-DP-2nX.text" = "do not throw away any rubbish";
+"NXf-EE-oRo.text" = "do not climb the ruins of buildings";
+"YxJ-oe-Dlt.text" = "do not make unnecessary noise";
+"R3r-oq-lIt.text" = "do not pick flowers or destroy flora";
+"Jsy-JC-t0V.text" = "do not remove any artifacts, especially do not use a metal detector.";
+"K7c-7D-vj6.text" = "Dear visitors,\nwelcome to the deserted Rolava, an area that is extremely valuable for its natural and cultural-historical heritage.";
+"BRb-em-dLY.text" = "We wish you a pleasant experience!";

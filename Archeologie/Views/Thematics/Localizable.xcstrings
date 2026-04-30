@@ -1,0 +1,29 @@
+{
+  "sourceLanguage" : "en",
+  "strings" : {
+    "roamingText" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "cs" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Cena datového roamingu je  v EU je stejná jako v ČR. Pro správné fungování aplikace je třeba mít roaming zapnutý."
+          }
+        },
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Der Preis für Datenroaming in der EU ist derselbe wie in der Tschechischen Republik. Damit die App richtig funktionierte, sollte der Datenroaming aktiviert werden."
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "The price of data roaming in the EU is the same as in the Czech Republic. You need to have roaming turned on for the optimal work of the app."
+          }
+        }
+      }
+    }
+  },
+  "version" : "1.0"
+}

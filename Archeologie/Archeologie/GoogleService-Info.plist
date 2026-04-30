@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>CLIENT_ID</key>
+	<string>453182926397-7d0upmr3mlbq2fiue23trovgvat66nb3.apps.googleusercontent.com</string>
+	<key>REVERSED_CLIENT_ID</key>
+	<string>com.googleusercontent.apps.453182926397-7d0upmr3mlbq2fiue23trovgvat66nb3</string>
+	<key>ANDROID_CLIENT_ID</key>
+	<string>453182926397-e9q78trvo32cl8efdjjd4pdqcn387qp3.apps.googleusercontent.com</string>
+	<key>API_KEY</key>
+	<string>AIzaSyBOSAzN5Lqx6iWOq8yv5-FRIe61hhw2QpQ</string>
+	<key>GCM_SENDER_ID</key>
+	<string>453182926397</string>
+	<key>PLIST_VERSION</key>
+	<string>1</string>
+	<key>BUNDLE_ID</key>
+	<string>cz.visualio.archeologie</string>
+	<key>PROJECT_ID</key>
+	<string>archeologieapp</string>
+	<key>STORAGE_BUCKET</key>
+	<string>archeologieapp.appspot.com</string>
+	<key>IS_ADS_ENABLED</key>
+	<false></false>
+	<key>IS_ANALYTICS_ENABLED</key>
+	<false></false>
+	<key>IS_APPINVITE_ENABLED</key>
+	<true></true>
+	<key>IS_GCM_ENABLED</key>
+	<true></true>
+	<key>IS_SIGNIN_ENABLED</key>
+	<true></true>
+	<key>GOOGLE_APP_ID</key>
+	<string>1:453182926397:ios:4a155f98b7b045ac858454</string>
+	<key>DATABASE_URL</key>
+	<string>https://archeologieapp.firebaseio.com</string>
+</dict>
+</plist>

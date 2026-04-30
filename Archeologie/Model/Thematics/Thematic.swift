@@ -16,10 +16,17 @@ struct Thematic: Codable, Equatable, Place {
     var title: String
     var latitude, longitude: Double
     var locations: [Int]
-    var logo1, logo2, logo3, logo4: String
-    var image:String
-
-    var author, professionalCooperation, artisticsCooperation, thanks, characteristics: String?
+    var image: String
+    var logo1: String
+    var logo1URL: String?
+    var logo2: String
+    var logo2URL: String?
+    var logo3: String
+    var logo3URL: String?
+    var logo4: String
+    var logo4URL: String?
+    var author: String?
+    var professionalCooperation, artisticsCooperation, thanks, characteristics: String?
     var geoJSON: GeoJSON?
 
     var coordinate:CLLocationCoordinate2D {
@@ -29,6 +36,10 @@ struct Thematic: Codable, Equatable, Place {
     enum CodingKeys: String, CodingKey {
          case id, title, latitude, longitude, locations, image, logo1, logo2, logo3, logo4, author, professionalCooperation, artisticsCooperation, thanks, characteristics
          case geoJSON = "geoJson"
+        case logo1URL = "logo1_url"
+        case logo2URL = "logo2_url"
+        case logo3URL = "logo3_url"
+        case logo4URL = "logo4_url"
      }
 }
 

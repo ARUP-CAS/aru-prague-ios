@@ -1,0 +1,43 @@
+
+/* Class = "UIButton"; normalTitle = "OPEN LOCATION"; ObjectID = "0Uf-nb-jan"; */
+"0Uf-nb-jan.normalTitle" = "Zobrazit detail";
+
+
+/* Class = "UILabel"; text = "In artistic cooperation with"; ObjectID = "7x1-ZF-XAo"; */
+"7x1-ZF-XAo.text" = "Výtvarná spolupráce";
+
+/* Class = "UIButton"; normalTitle = "Navigate"; ObjectID = "Exw-vA-FIo"; */
+"Exw-vA-FIo.normalTitle" = "Navigovat";
+
+/* Class = "UILabel"; text = "In cooperation with"; ObjectID = "FSl-t9-K1y"; */
+"FSl-t9-K1y.text" = "Odborná spolupráce";
+
+/* Class = "UILabel"; text = "Topics"; ObjectID = "GPk-R7-WsE"; */
+"GPk-R7-WsE.text" = "Vycházky";
+
+/* Class = "UILabel"; text = "Acknowledgment"; ObjectID = "OOx-Cx-VYJ"; */
+"OOx-Cx-VYJ.text" = "Poděkování";
+
+/* Class = "UILabel"; text = "Author"; ObjectID = "PT5-Hy-NuJ"; */
+"PT5-Hy-NuJ.text" = "Autor";
+
+
+/* Class = "UIButton"; normalTitle = "Show on web"; ObjectID = "Snp-ji-pzH"; */
+"Snp-ji-pzH.normalTitle" = "Zobrazit na webu";
+
+
+/* Class = "UITextField"; placeholder = "Search..."; ObjectID = "dgl-tc-L6k"; */
+"dgl-tc-L6k.placeholder" = "Hledat...";
+
+/* Class = "UIButton"; normalTitle = "Credits"; ObjectID = "klo-Xx-Etp"; */
+"klo-Xx-Etp.normalTitle" = "O tvůrcích";
+
+/* Class = "UILabel"; text = "Address"; ObjectID = "sFe-Ha-wXt"; */
+"sFe-Ha-wXt.text" = "Adresa";
+
+
+/* Class = "UIBarButtonItem"; title = "Back"; ObjectID = "ufB-jP-bCP"; */
+"ufB-jP-bCP.title" = "Zpět";
+
+/* Class = "UIButton"; normalTitle = "START GUIDE"; ObjectID = "yNT-rb-UqN"; */
+"yNT-rb-UqN.normalTitle" = "Začít vycházku";
