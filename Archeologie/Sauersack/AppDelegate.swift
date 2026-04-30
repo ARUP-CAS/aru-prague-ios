@@ -19,7 +19,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
         
-        GMSServices.provideAPIKey("YOUR_GOOGLE_MAPS_API_KEY_SAUERSACK")
+        GMSServices.provideAPIKey("YOUR_GOOGLE_MAPS_API_KEY")
         FirebaseApp.configure()
         URLCache.shared.removeAllCachedResponses()
 //
