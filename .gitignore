@@ -47,3 +47,7 @@ DerivedData/
 **/xcshareddata/WorkspaceSettings.xcsettings
 
 # End of https://www.toptal.com/developers/gitignore/api/cocoapods,xcode
+
+# Sensitive files — never commit
+GoogleService-Info.plist
+.DS_Store
